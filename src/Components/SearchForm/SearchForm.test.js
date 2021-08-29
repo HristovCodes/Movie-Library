@@ -34,7 +34,7 @@ it("component search form renders correctly", () => {
   expect(container).toBeInTheDocument();
 });
 
-it("search returns correct value", async () => {
+it("correct search returns correct value", async () => {
   const fakeData = [
     {
       score: 0.86401975,
@@ -140,11 +140,20 @@ it("search returns correct value", async () => {
     },
   ];
 
-  jest.spyOn(global, "fetch").mockImplementation(() =>
-    Promise.resolve({
-      json: () => Promise.resolve(fakeData),
-    })
-  );
+  jest.spyOn(global, "fetch").mockImplementation(() => {
+    if (
+      getByPlaceholderText(container, "Search by movie title...").value ===
+      "cars"
+    ) {
+      return Promise.resolve({
+        json: () => Promise.resolve(fakeData),
+      });
+    }
+
+    return Promise.resolve({
+      json: () => Promise.resolve({}),
+    });
+  });
 
   act(() => {
     render(<App></App>, container);

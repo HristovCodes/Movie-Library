@@ -1,8 +1,10 @@
 import React, { FormEventHandler, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./SearchForm.scss";
 
 export default function SearchForm({ setMovies }: any) {
   const [search, setSearch] = useState("");
+  let history = useHistory();
 
   const handleSubmit: FormEventHandler = async (e) => {
     e.preventDefault();
@@ -12,8 +14,8 @@ export default function SearchForm({ setMovies }: any) {
     );
 
     setMovies(await response.json());
+    history.replace(`/search/${search}`);
   };
-
   return (
     <form aria-label="form" onSubmit={handleSubmit}>
       <input

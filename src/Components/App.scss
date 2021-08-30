@@ -1,0 +1,17 @@
+.App {
+  margin: 0;
+  .Results {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    > div,
+    > p {
+      color: #fff;
+    }
+
+    p {
+      margin-top: 50px;
+    }
+  }
+}

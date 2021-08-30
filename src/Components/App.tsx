@@ -2,23 +2,26 @@ import React, { useState } from "react";
 import "./App.scss";
 import Hero from "./Hero/Hero";
 import Nav from "./Nav/Nav";
+import Results from "./Results/Results";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   const [movies, setMovies] = useState([]);
 
-  return movies ? (
-    <div className="App">
+  return (
+    <Router>
       <Nav setMovies={setMovies}></Nav>
-      <Hero></Hero>
-      {movies.map((m: any) => {
-        return <div key={m.show.id}>{m.show.name}</div>;
-      })}
-    </div>
-  ) : (
-    <div className="App">
-      <Nav setMovies={setMovies}></Nav>
-      <Hero></Hero>
-    </div>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Hero></Hero>
+          </Route>
+          <Route path="/Search/">
+            <Results movies={movies}></Results>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

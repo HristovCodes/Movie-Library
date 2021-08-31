@@ -5,8 +5,9 @@ import {
   screen,
   waitFor,
   getByText,
-} from "@testing-library/react";
-import { render, unmountComponentAtNode } from "react-dom";
+  render,
+} from "../../reduxTestUtils";
+import { unmountComponentAtNode } from "react-dom";
 import SearchForm from "./SearchForm";
 import App from "../App";
 import userEvent from "@testing-library/user-event";
@@ -142,8 +143,7 @@ it("correct search returns correct value", async () => {
 
   jest.spyOn(global, "fetch").mockImplementation(() => {
     if (
-      getByPlaceholderText(container, "Search by movie title...").value ===
-      "cars"
+      screen.getByPlaceholderText("Search by movie title...").value === "cars"
     ) {
       return Promise.resolve({
         json: () => Promise.resolve(fakeData),
@@ -161,10 +161,10 @@ it("correct search returns correct value", async () => {
 
   act(() => {
     userEvent.type(
-      getByPlaceholderText(container, "Search by movie title..."),
+      screen.getByPlaceholderText("Search by movie title..."),
       "cars"
     );
-    userEvent.click(getByText(container, "Search"));
+    userEvent.click(screen.getByText("Search"));
   });
 
   await waitFor(() => {

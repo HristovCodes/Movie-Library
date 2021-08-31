@@ -1,4 +1,4 @@
-import React, { FormEventHandler, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./SearchForm.scss";
 
@@ -6,7 +6,7 @@ export default function SearchForm({ setMovies }: any) {
   const [search, setSearch] = useState("");
   let history = useHistory();
 
-  const handleSubmit: FormEventHandler = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const response = await fetch(

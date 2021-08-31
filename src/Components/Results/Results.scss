@@ -1,0 +1,35 @@
+.Results {
+  display: grid;
+  grid-template-areas:
+    "heading"
+    ".";
+  grid-template-columns: repeat(auto-fill, minmax(min(20%, 100%), 2fr));
+  grid-template-rows: auto;
+
+  > .Heading {
+    padding-top: 50px;
+    color: #fff;
+    grid-column-start: 1;
+    grid-column-end: -1;
+  }
+
+  > div {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    max-height: 250px;
+    > article {
+      > p {
+        font-size: 0.8rem;
+        max-height: 100px;
+        overflow: hidden;
+      }
+    }
+
+    h2,
+    p {
+      color: #fff;
+    }
+  }
+}

@@ -3,6 +3,7 @@ import "./App.scss";
 import Hero from "./Hero/Hero";
 import Nav from "./Nav/Nav";
 import Results from "./Results/Results";
+import MovieInfo from "./MovieInfo/MovieInfo";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { AppDispatch, RootState } from "../store";
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route path="/Search/">
             <Results movies={movies}></Results>
+          </Route>
+          <Route path="/MovieInfo/">
+            <MovieInfo></MovieInfo>
           </Route>
         </Switch>
       </div>

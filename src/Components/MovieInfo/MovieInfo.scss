@@ -1,0 +1,47 @@
+.MovieInfo {
+  display: grid;
+  grid-template-areas:
+    ". . . . ."
+    ". image . title ."
+    ". image . genres ."
+    ". image . summary ."
+    ". image . original ."
+    ". . . . .";
+  grid-template-columns: 1fr 4fr 1fr 10fr 1fr;
+  grid-template-rows: 1.5fr 2fr 2fr 8fr 2fr 1.5fr;
+  height: 100vh;
+
+  > img {
+    width: 25vw;
+    grid-area: image;
+  }
+
+  > .Heading {
+    grid-area: title;
+
+    font-size: 3rem;
+    color: #fff;
+  }
+
+  > .Genres {
+    grid-area: genres;
+  }
+
+  > article {
+    grid-area: summary;
+    > p {
+      font-size: 1rem;
+    }
+  }
+
+  h1,
+  p {
+    color: #fff;
+  }
+
+  > a {
+    color: #ff2960;
+    grid-area: original;
+    text-decoration: none;
+  }
+}

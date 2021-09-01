@@ -2,3 +2,23 @@
 .btnsubmit {
   margin-right: 10px;
 }
+
+.search {
+  border-color: #ff2960;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 2px 4px;
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.btnsubmit {
+  background-color: #ff2960;
+  border: none;
+  padding: 3px 6px;
+  color: #ffffff;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}

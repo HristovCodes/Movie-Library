@@ -19,38 +19,34 @@ export default function Results({ movies }: ResultsProps) {
     <section className="Results">
       <h1 className="Heading">Results:</h1>
       {movies.map((m: any) => {
-        const full = m.show.summary ? m.show.summary : "";
-        const summ =
-          full.indexOf(".") <= 150
-            ? full.substring(0, full.indexOf(".") + 1)
-            : full.substr(0, 150) + "...";
-
-        const customstyles: React.CSSProperties = {
-          backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75) ), url(${
-            m.show.image?.original ? m.show.image?.original : placeholderimage
-          })`,
-        };
         return (
-          <div style={customstyles} className="Card" key={m.show.id}>
+          <div className="Card" key={m.show.id}>
             <Link
-              className="Name"
+              className="Link"
               onClick={() => setMovies([m])}
               to={`/movieinfo/${m.show.name}`}
             >
-              {m.show.name}
+              <img
+                alt={m.show.name}
+                src={
+                  m.show.image?.original
+                    ? m.show.image?.original
+                    : placeholderimage
+                }
+              ></img>
+              <h3 className="Name">{m.show.name}</h3>
+              <p>
+                Category: <span>{m.show.type}</span>
+              </p>
+              <a
+                className="Original"
+                rel="noreferrer"
+                target="_blank"
+                href={m.show.url}
+              >
+                Visit on TVMaze
+              </a>
             </Link>
-            <p>
-              Category: <span>{m.show.type}</span>
-            </p>
-            <article dangerouslySetInnerHTML={{ __html: summ }}></article>
-            <a
-              className="Original"
-              rel="noreferrer"
-              target="_blank"
-              href={m.show.url}
-            >
-              Visit on TVMaze
-            </a>
           </div>
         );
       })}

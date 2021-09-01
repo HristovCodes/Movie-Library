@@ -12,7 +12,8 @@
     grid-column-end: -1;
   }
 
-  > div > .Link {
+  > .Card {
+    cursor: pointer;
     text-decoration: none;
     border-radius: 15px;
     margin: 40px 20px;

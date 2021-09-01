@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
 import { useAppDispatch } from "../../hooks";
 import "./Results.scss";
@@ -14,39 +14,42 @@ export default function Results({ movies }: ResultsProps) {
   const setMovies = (mvs: RootState) => {
     dispatch({ type: "UPDATE_MOVIES", payload: mvs });
   };
+  const history = useHistory();
 
   return (
     <section className="Results">
       <h1 className="Heading">Results:</h1>
       {movies.map((m: any) => {
         return (
-          <div className="Card" key={m.show.id}>
-            <Link
-              className="Link"
-              onClick={() => setMovies([m])}
-              to={`/movieinfo/${m.show.name}`}
+          <div
+            onClick={() => {
+              setMovies([m]);
+              history.replace(`/movieinfo/${m.show.name}`);
+            }}
+            className="Card"
+            key={m.show.id}
+          >
+            <img
+              alt={m.show.name}
+              src={
+                m.show.image?.original
+                  ? m.show.image?.original
+                  : placeholderimage
+              }
+            ></img>
+            <h3 className="Name">{m.show.name}</h3>
+            <p>
+              Category: <span>{m.show.type}</span>
+            </p>
+            <a
+              className="Original"
+              rel="noreferrer"
+              target="_blank"
+              href={m.show.url}
+              onClick={(e) => e.stopPropagation()}
             >
-              <img
-                alt={m.show.name}
-                src={
-                  m.show.image?.original
-                    ? m.show.image?.original
-                    : placeholderimage
-                }
-              ></img>
-              <h3 className="Name">{m.show.name}</h3>
-              <p>
-                Category: <span>{m.show.type}</span>
-              </p>
-              <a
-                className="Original"
-                rel="noreferrer"
-                target="_blank"
-                href={m.show.url}
-              >
-                Visit on TVMaze
-              </a>
-            </Link>
+              Visit on TVMaze
+            </a>
           </div>
         );
       })}

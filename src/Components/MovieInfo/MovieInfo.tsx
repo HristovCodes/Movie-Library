@@ -8,7 +8,10 @@ export default function MovieInfo() {
 
   return movies.length ? (
     <article className="MovieInfo">
-      <img src={movies[0].show?.image?.original}></img>
+      <img
+        alt={movies[0].show?.name}
+        src={movies[0].show?.image?.original}
+      ></img>
       <h1 className="Heading">{movies[0].show?.name}</h1>
       <p className="Genres">
         Category: <span>{movies[0].show?.type}</span>

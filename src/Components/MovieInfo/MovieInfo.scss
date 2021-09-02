@@ -65,7 +65,7 @@
     }
 
     > img {
-      width: 25vw;
+      width: 100%;
       grid-area: image;
     }
 
@@ -94,9 +94,31 @@
     }
 
     > a {
+      justify-self: end;
+      align-self: center;
       color: #ff2960;
       grid-area: original;
       text-decoration: none;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .MovieInfo {
+    > .Grid {
+      grid-template-areas:
+        ". . . ."
+        ". image image ."
+        ". image image ."
+        ". title title ."
+        ". genres original ."
+        ". summary summary ."
+        ". review review .";
+      grid-template-columns: 1fr 2fr 2fr 1fr;
+      grid-template-rows: 10vh auto auto auto auto auto auto 10vh;
+      > .Heading {
+        font-size: 2rem;
+      }
     }
   }
 }

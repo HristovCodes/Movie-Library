@@ -19,3 +19,10 @@
     color: #ff2960;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .SignIn,
+  .UserName {
+    font-size: 0.8rem;
+  }
+}

@@ -1,17 +1,18 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
+import Movie from "../../reducers";
 import { useAppDispatch } from "../../hooks";
 import "./Results.scss";
 import placeholderimage from "../../media/placeholder.png";
 
 interface ResultsProps {
-  movies: RootState;
+  movies: Movie[];
 }
 
 export default function Results({ movies }: ResultsProps) {
   const dispatch: AppDispatch = useAppDispatch();
-  const setMovies = (mvs: RootState) => {
+  const setMovies = (mvs: Movie[]) => {
     dispatch({ type: "UPDATE_MOVIES", payload: mvs });
   };
   const history = useHistory();

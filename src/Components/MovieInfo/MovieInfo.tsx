@@ -1,10 +1,10 @@
 import React from "react";
 import "./MovieInfo.scss";
 import { useAppSelector } from "../../hooks";
-import { RootState } from "../../store";
+import Movie from "../../reducers";
 
 export default function MovieInfo() {
-  const movies = useAppSelector<RootState>((state) => state);
+  const movies = useAppSelector<Movie[]>((state) => state.movies);
 
   return movies.length ? (
     <article className="MovieInfo">

@@ -1,4 +1,4 @@
-interface Movie {
+export default interface Movie {
   score?: number;
   show?: {
     id: number;
@@ -53,12 +53,20 @@ interface Movie {
   };
 }
 
-type MoviesState = Movie[];
+interface MoviesState {
+  movies: Movie[];
+  authUser: any;
+}
 
 //eslint-disable-next-line
-const initialState = new Array();
+const initialState = {
+  movies: [],
+  authUser: {},
+};
 
-type Action = { type: "UPDATE_MOVIES"; payload: MoviesState };
+type MoviesAction = { type: "UPDATE_MOVIES"; payload: Movie[] };
+type AuthAction = { type: "UPDATE_USER"; payload: any };
+type Action = MoviesAction | AuthAction;
 
 export const moviesReducer = (
   state: MoviesState = initialState,
@@ -66,7 +74,10 @@ export const moviesReducer = (
 ) => {
   switch (action.type) {
     case "UPDATE_MOVIES": {
-      return action.payload;
+      return { ...state, movies: action.payload };
+    }
+    case "UPDATE_USER": {
+      return { ...state, authUser: action.payload };
     }
     default: {
       return state;

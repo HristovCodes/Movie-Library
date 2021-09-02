@@ -1,5 +1,5 @@
 import { createStore } from "@reduxjs/toolkit";
-import { moviesReducer } from "./moviesReducer";
+import { moviesReducer } from "./reducers";
 
 export const store = createStore(moviesReducer);
 

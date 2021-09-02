@@ -30,7 +30,7 @@ export default function Card({ score, show }: Movie) {
     <div
       onClick={() => {
         setMovies([{ score: score, show: show }]);
-        history.replace(`/movieinfo/${show?.name}`);
+        history.replace(`/Movie-Library/MovieInfo/${show?.name}`);
       }}
       className="Card"
       key={show?.id}

@@ -23,14 +23,14 @@ function App() {
       <Nav setMovies={setMovies}></Nav>
       <div className="App">
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/Movie-Library/">
             <Hero></Hero>
             <Favourites></Favourites>
           </Route>
-          <Route path="/Search/">
+          <Route path="/Movie-Library/Search/">
             <Results movies={state.movies}></Results>
           </Route>
-          <Route path="/MovieInfo/">
+          <Route path="/Movie-Library/MovieInfo/">
             <MovieInfo></MovieInfo>
           </Route>
         </Switch>

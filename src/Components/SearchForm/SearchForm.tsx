@@ -17,7 +17,7 @@ export default function SearchForm({ setMovies }: any) {
     history.replace(`/search/${search}`);
   };
   return (
-    <form aria-label="form" onSubmit={handleSubmit}>
+    <form className="SearchForm" aria-label="form" onSubmit={handleSubmit}>
       <input
         onChange={(e) => setSearch(e.target.value)}
         className="search"

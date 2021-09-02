@@ -1,0 +1,21 @@
+.SignIn {
+  margin-right: 10px;
+  background-color: #ff2960;
+  border: none;
+  padding: 3px 6px;
+  color: #ffffff;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.UserName {
+  font-size: 1.1rem;
+  color: #ffffff;
+  padding-right: 10px;
+  transition: all 0.5s;
+  &:hover {
+    cursor: pointer;
+    color: #ff2960;
+  }
+}

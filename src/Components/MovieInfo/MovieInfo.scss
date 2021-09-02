@@ -1,4 +1,4 @@
-.MovieInfo {
+.MovieInfo > .Grid {
   display: grid;
   grid-template-areas:
     ". . . . ."
@@ -8,8 +8,8 @@
     ". image . original ."
     ". . . . .";
   grid-template-columns: 1fr 4fr 1fr 10fr 1fr;
-  grid-template-rows: 1.5fr 2fr 2fr 8fr 2fr 1.5fr;
-  height: 100vh;
+  grid-template-rows: 1fr auto auto 5fr auto 1fr;
+  min-height: 100vh;
 
   > img {
     width: 25vw;
@@ -19,6 +19,7 @@
   > .Heading {
     grid-area: title;
 
+    margin: 10px 0;
     font-size: 3rem;
     color: #fff;
   }
@@ -43,5 +44,39 @@
     color: #ff2960;
     grid-area: original;
     text-decoration: none;
+  }
+}
+
+.MovieInfo > .StarRatings {
+  font-size: 3rem;
+  color: #fff;
+  span:hover {
+    cursor: pointer;
+    color: #e6ac00;
+  }
+  &.one {
+    span:nth-child(-n + 1) {
+      color: #e6ac00;
+    }
+  }
+  &.two {
+    span:nth-child(-n + 2) {
+      color: #e6ac00;
+    }
+  }
+  &.three {
+    span:nth-child(-n + 3) {
+      color: #e6ac00;
+    }
+  }
+  &.four {
+    span:nth-child(-n + 4) {
+      color: #e6ac00;
+    }
+  }
+  &.five {
+    span:nth-child(-n + 5) {
+      color: #e6ac00;
+    }
   }
 }

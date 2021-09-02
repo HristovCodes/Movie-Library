@@ -10,6 +10,7 @@ import { onChildRemoved, query, ref } from "firebase/database";
 export default function Results() {
   const state = useAppSelector<RootState>((state) => state);
   const [movies, setMovies] = useState<Movie[]>();
+
   onChildRemoved(
     query(ref(database, `user/${state.authUser.uid}/`)),
     (snapshop) => {

@@ -16,14 +16,17 @@ export function updateData(path, data) {
   );
 }
 
-export function deleteData(path, id) {
-  remove(ref(database, `${path}/${id}`)).catch((e) =>
+export function deleteData(path) {
+  remove(ref(database, `${path}/`)).catch((e) =>
     console.log(`${e.code}\n${e.message}`)
   );
 }
 
 export async function getData(path) {
   const response = await get(query(ref(database, `${path}/`)));
-  if (response.exists()) return await response.val();
+  if (response.exists()) {
+    const data = response.val();
+    return data;
+  }
   return [];
 }

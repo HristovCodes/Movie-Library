@@ -3,15 +3,11 @@ import { useHistory } from "react-router-dom";
 import { AppDispatch, RootState } from "../../store";
 import Movie from "../../reducers";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import "./Results.scss";
+import "./Favourites.scss";
 import placeholderimage from "../../media/placeholder.png";
-import { updateData } from "../firebase/firebasedatabase";
+import { getData, updateData } from "../firebase/firebasedatabase";
 
-interface ResultsProps {
-  movies: Movie[];
-}
-
-export default function Results({ movies }: ResultsProps) {
+export default function Results() {
   const state = useAppSelector<RootState>((state) => state);
   const dispatch: AppDispatch = useAppDispatch();
   const setMovies = (mvs: Movie[]) => {
@@ -24,10 +20,15 @@ export default function Results({ movies }: ResultsProps) {
     updateData(`user/${state.authUser.uid}/${movie.show?.name}`, movie);
   };
 
+  const movies = state.authUser.uid
+    ? getData(`user/${state.authUser.uid}/`)
+    : [];
+  console.log(movies);
+
   return (
-    <section className="Results">
-      <h1 className="Heading">Results:</h1>
-      {movies.map((m: any) => {
+    <section className="Favourites">
+      <h1 className="Heading">Your Favourite Movies:</h1>
+      {Object.values(movies).map((m: any) => {
         return (
           <div
             onClick={() => {

@@ -4,6 +4,7 @@ import Hero from "./Hero/Hero";
 import Nav from "./Nav/Nav";
 import Results from "./Results/Results";
 import MovieInfo from "./MovieInfo/MovieInfo";
+import Favourites from "./Favourites/Favourites";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { AppDispatch, RootState } from "../store";
@@ -24,6 +25,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Hero></Hero>
+            <Favourites></Favourites>
           </Route>
           <Route path="/Search/">
             <Results movies={state.movies}></Results>

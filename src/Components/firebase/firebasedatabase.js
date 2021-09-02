@@ -3,9 +3,8 @@ import {
   ref,
   update,
   remove,
-  orderByChild,
   query,
-  limitToFirst,
+  get,
 } from "firebase/database";
 import { firebase } from "./firebaseapp";
 
@@ -17,24 +16,14 @@ export function updateData(path, data) {
   );
 }
 
-export async function deleteData(path, id) {
+export function deleteData(path, id) {
   remove(ref(database, `${path}/${id}`)).catch((e) =>
     console.log(`${e.code}\n${e.message}`)
   );
 }
 
-export async function orderData(path, child, ammount = 10) {
-  return query(
-    ref(database, `${path}/`),
-    orderByChild(child),
-    limitToFirst(ammount)
-  );
-}
-
-export async function getData(path, child) {
-  return query(ref(database, `${path}/`), orderByChild(child));
-}
-
-export async function pullUserData(id) {
-  return query(ref(database, `user/${id}/`));
+export async function getData(path) {
+  const response = await get(query(ref(database, `${path}/`)));
+  if (response.exists()) return await response.val();
+  return [];
 }

@@ -8,7 +8,7 @@ export default function Nav({ setMovies }: any) {
   let history = useHistory();
   return (
     <nav className="Nav">
-      <h2 onClick={() => history.replace("/")}>My Movie Collection</h2>
+      <h2 onClick={() => history.replace("/Movie-Library/")}>My Movie Collection</h2>
       <SearchForm setMovies={setMovies}></SearchForm>
       <SignIn></SignIn>
     </nav>

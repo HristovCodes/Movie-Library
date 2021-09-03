@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./MovieInfo.scss";
 import { useAppSelector } from "../../hooks";
 import Movie from "../../reducers";
+import placeholderimage from "../../media/placeholder.png";
 import { getData, updateData } from "../firebase/firebasedatabase";
 import { RootState } from "../../store";
 
@@ -49,7 +50,7 @@ export default function MovieInfo() {
       <article className="Grid">
         <img
           alt={movies[0].show?.name}
-          src={movies[0].show?.image?.original}
+          src={movies[0].show?.image ? movies[0].show?.image?.original : placeholderimage}
         ></img>
         <h1 className="Heading">{movies[0].show?.name}</h1>
         <p className="Genres">

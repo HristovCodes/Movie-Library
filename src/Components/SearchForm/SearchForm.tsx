@@ -14,7 +14,7 @@ export default function SearchForm({ setMovies }: any) {
     );
 
     setMovies(await response.json());
-    history.replace(`/search/${search}`);
+    history.replace(`/Movie-Library/Search/${search}`);
   };
   return (
     <form className="SearchForm" aria-label="form" onSubmit={handleSubmit}>
